@@ -1,0 +1,6 @@
+$('.login-modal').html('#{ j render "devise/sessions/form", resource: @user }');
+
+if (!$('#sessions-modal').find('.flash').length) {
+$('#sessions-modal').modal('hide')
+}
+$('.header').html("#{ j render "layouts/header" }");

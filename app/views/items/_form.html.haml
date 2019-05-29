@@ -1,0 +1,42 @@
+= form_for @item, html: { multipart: true } do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @item.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, id: 'title', class: 'form-control'
+  .form-group.mt-4
+    = f.label :category
+    = f.select :category, Item.categories.keys, class: 'form-control', id: 'category'
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :manufacturer
+    = f.text_field :manufacturer, class: 'form-control'
+  .form-group
+    = f.label :condition
+    = f.select :condition, ['New', 'Not new'], class: 'form-control'
+  .form-group
+    = f.label :image
+    .image-form= f.file_field :image
+  .form-group
+    = f.label :city
+    = f.select :city, ['Minsk', 'Vitebsk', 'Mogilev', 'Gomel','Brest', 'Grodno'], class: 'form-control'
+  .form-group
+    = f.label :price
+    = f.number_field :price, class: 'form-control'
+  .field
+    = f.hidden_field :user_id, value: current_user.id
+  .field
+    = f.hidden_field :published, value: true
+
+  -#.field
+  -#  = f.label :pictures, class: 'control-label'
+  -#  = file_field_tag "images[]", type: :file, multipart: true
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'

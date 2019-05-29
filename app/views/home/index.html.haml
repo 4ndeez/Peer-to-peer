@@ -1,2 +1,31 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.row.border-simple
+  .col-6.mt-2
+    %p= "Total advertisements: #{@items.count}"
+  .col-6.mt-2
+    .text-right= 'Sort ads by:'
+    .text-right= select_tag :sort_by, options_for_select(['default', 'date (oldest)', 'date (newest)',
+    'price (cheapest)', 'price (expensive)'])
+%aside.mt-2.border-body
+  %h5= 'Categories:'
+  .item-category= 'all'
+  - Item.categories.keys.each do |cat|
+    .item-category= cat
+.row
+  - @items.each do |item|
+    .col-12
+      = link_to item_path(item) do
+        .adv.border-body.mt-2
+          .row
+            .col-3= image_tag item.image.url(:medium), class: 'main-image'
+            .col-7
+              .item-title= item.title
+              .item-category= item.category
+              .item-description= item.description
+              %br
+              .item-city= item.city
+            .col-2
+              .item-price.text-right= "#{item.price} p."
+              %br
+              %br
+              %br
+              .item-updated.text-right= item.updated_at.to_formatted_s(:short)

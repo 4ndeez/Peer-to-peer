@@ -1,0 +1,63 @@
+.container
+  .row.mt-4
+    .col-12
+      %h2.text-center Editing user profile
+      .col-12.border-body
+        = form_for :user, url: user_path(@user), method: :put, class: 'form' do |f|
+          .form-group.row
+            .col-2
+              = f.label 'First name', class: 'col-form-label'
+            .col-10
+              = f.text_field :first_name, class: 'form-control'
+          .form-group.row
+            .col-2
+              = f.label 'Second name', class: 'col-form-label'
+            .col-10
+              = f.text_field :second_name, class: 'form-control'
+          .form-group.row
+            .col-2
+              = f.label 'E-mail', class: 'col-form-label'
+            .col-10
+              = f.text_field :email, class: 'form-control'
+          .form-group.row
+            .col-2
+              = f.label 'NickName', class: 'col-form-label'
+            .col-10
+              = f.text_field :nickname, class: 'form-control'
+          .form-group.row
+            .col-2
+              = f.label 'Date of birth', class: 'col-form-label'
+            .col-10
+              = f.date_select( :birth_date, order: [:day, :month, :year], start_year: Date.current.year, end_year: 1900)
+          .form-group.row
+            .col-2
+              = f.label 'City', class: 'col-form-label'
+            .col-10
+              = f.select :city, ['Minsk', 'Vitebsk', 'Mogilev', 'Gomel','Brest', 'Grodno']
+          .form-group.row
+            .col-2
+              = f.label 'Gender', class: 'col-form-label'
+            .col-10
+              = f.select :gender, ['Male', 'Female']
+          .form-group.row
+            .col-2
+              = f.label 'Avatar', class: 'col-form-label'
+            .col-10
+              = f.file_field :avatar
+          .form-group.row
+            .col-2
+            .col-10
+              = image_tag @user.avatar.url(:thumb)
+          .form-group.row
+            .col-2
+              = f.label 'First phone', class: 'col-form-label'
+            .col-10
+              = f.text_field :first_phone, class: 'form-control'
+          .form-group.row
+            .col-2
+              = f.label 'Second phone', class: 'col-form-label'
+            .col-10
+              = f.text_field :second_phone, class: 'form-control'
+          .form-group.row
+            .col-12
+              = f.submit 'Update', class: 'btn btn-success  '

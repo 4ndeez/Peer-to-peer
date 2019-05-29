@@ -1,0 +1,10 @@
+.modal.fade{id: "sessions-modal", tabindex: "-1", role: "dialog", "aria-labelledby": "loginLabel",
+            "aria-hidden": "true"}
+  .modal-dialog.modal-dialog-centered{role: "document"}
+    .modal-content
+      .modal-header
+        %h4.modal-title{id: "loginLabel"}= t(:login)
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": "true"} &times;
+      .modal-body.login-modal
+        = render 'devise/sessions/form'

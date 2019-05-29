@@ -8,4 +8,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    = render 'layouts/header'
+    .container-fluid
+      = yield
+      %p.notice= notice
+      %p.alert= alert
+    = render 'layouts/footer'
+    = render 'devise/sessions/modal'
+    =javascript_include_tag src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    =javascript_include_tag src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    =javascript_include_tag src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"

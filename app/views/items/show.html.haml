@@ -1,0 +1,44 @@
+%p#notice= notice
+.container-fluid.border-body
+  .row
+    .col-8
+      = image_tag @item.image.url(:medium), class: 'item-image-big'
+    .col-4.border-left
+      %h4.font-weight-bold= @item.title
+      %h5.text-sm= @item.city
+      %br
+      %h4.font-weight-bold= "#{@item.price} p."
+      = link_to 'Message owner', root_path, class: 'btn btn-success btn-block'
+      .contacts-window.mt-2.border-body.text-center
+        %h5= @item.user.first_phone
+        %h5= @item.user.second_phone
+      .owner-window.border-body.mt-2
+        .row
+          .col-4
+            = image_tag @item.user.avatar(:thumb), class: 'border'
+          .col-8
+            %p.font-weight-bold= "#{@item.user.second_name} #{@item.user.first_name}"
+            %p= "Advertisements: #{@item.user.items.count}"
+            %p.user-registered.text-right= "Registered at: #{@item.user.created_at.strftime("%B %d, %Y")}"
+  .row
+    .col-8.mt-2
+      %h4.font-weight-bold.text-center= "About #{@item.title}"
+  %p
+    %b Title:
+    = @item.title
+  %p
+    %b Category:
+    = @item.category
+  %p
+    %b Manufacturer:
+    = @item.manufacturer
+  %p
+    %b Condition:
+    = @item.condition
+  .row
+    .col-8.mt-2
+      %h4.font-weight-bold.text-center= 'Description'
+      %h5= @item.description
+
+  = link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary'
+  = link_to 'Back', items_path, class: 'btn btn-secondary'

@@ -1,0 +1,28 @@
+.row.mt-2
+  .col-3
+    %h2.text-left User profile
+    .col-12.border-body
+      .user-block.text-left
+        =image_tag @user.avatar.url(:profile), class: 'border'
+        .border-bottom.mt-2
+        %p= @user.nickname
+        %p.font-weight-bold= "#{@user.second_name} #{@user.first_name}"
+        = mail_to @user.email
+        %p= @user.city
+        %p= @user.birth_date.strftime("%B %d, %Y")
+        %p= @user.gender
+        %p= @user.first_phone
+      %btn= link_to 'Edit', edit_user_path, class: 'btn btn-success'
+  .col-9
+    %h2.text-center= "User ads(#{@user.items.count})"
+    .col-12.border-body
+      .row
+        - @user.items.each do |item|
+          .col-4
+            = link_to item_path(item) do
+              .profile-ad.border-body.mb-2
+                = image_tag item.image.url(:medium), class: 'profile-ad-image border-bottom'
+                .profile-category= item.category
+                .profile-title.font-weight-bold= item.title
+                .profile-city= item.city
+                .profile-price.font-weight-bold= "#{item.price} p."

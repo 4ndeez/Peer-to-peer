@@ -1,0 +1,15 @@
+= render 'devise/shared/flash'
+= form_for :user, url: session_path(:user), remote: true, class: "form", id: "login-form" do |f|
+  = f.label t(:email), class: "col-form-label"
+  = f.text_field :email, class: "form-control", required: true
+
+  = f.label t(:password), class: "col-form-label"
+  = f.password_field :password, class: "form-control", required: true
+  %p
+  = f.button t(:close), class: "btn btn-secondary", "data-dismiss": "modal"
+  = f.submit t(:login), class: "btn btn-primary", id: "login"
+%p
+%p
+%br
+%h7= t(:new_user)
+%h7= link_to t(:signup_now), new_user_registration_path, "data-toggle": "modal", "data-target": "#signup-modal", "data-dismiss": "modal"

@@ -15,3 +15,71 @@
  */
 
 @import "bootstrap";
+
+.border-body {
+  border: 1px solid #C5C9CD;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.border-simple {
+  border: 1px solid #C5C9CD;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.navbar-profile {
+  border-radius: 5px;
+}
+
+aside {
+  float:right;
+  padding: 10px;
+}
+
+footer {
+  float:bottom;
+}
+
+.main-image {
+  height: 125px;
+  width: 250px;
+  border-right: 1px solid #C5C9CD;
+  padding-right: 5px;
+}
+
+.item-image-big {
+  height: 400px;
+  width: 800px;
+}
+
+.profile-ad-image {
+  height: 150px;
+  width: 200px;
+  vertical-align: middle;
+}
+
+.adv, .profile-ad {
+  color: black;
+  text-decoration: none;
+}
+
+.item-title {
+  font-weight: bold;
+}
+
+.item-city {
+  float: bottom;
+  bottom: 0;
+}
+
+.item-updated {
+  color: gray;
+}
+
+.user-registered {
+  color: gray;
+  font-size: small;
+}
