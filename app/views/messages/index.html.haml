@@ -1,0 +1,14 @@
+.messages
+  - @conversation.messages.each do |message|
+    - if message.body
+      .media
+        .media-left
+          = image_tag message.user.avatar.url(:small), class: "media-object user-img", alt: message.user.email
+        .media-body
+          %h5.media-heading= message.user.email
+          %small.text-muted= message.message_time
+          %p= message.body
+  = form_for [@conversation, @message] do |f|
+    .form-group
+      = f.text_area :body, autofocus: true, placeholder: "Your message", class: "form-control", rows: 5
+      = f.submit "Send", class: "btn btn-primary pull-right"

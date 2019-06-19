@@ -1,31 +1,85 @@
 .row.border-simple
-  .col-6.mt-2
-    %p= "Total advertisements: #{@items.count}"
-  .col-6.mt-2
-    .text-right= 'Sort ads by:'
-    .text-right= select_tag :sort_by, options_for_select(['default', 'date (oldest)', 'date (newest)',
-    'price (cheapest)', 'price (expensive)'])
-%aside.mt-2.border-body
-  %h5= 'Categories:'
-  .item-category= 'all'
-  - Item.categories.keys.each do |cat|
-    .item-category= cat
+  .col-10.mt-2
+    %p= "Total advertisements: #{Item.count}"
+    .row.mb-2
+      .col
+      = form_tag(root_path, method: :get) do
+        .item-category= 'All'
+      - Item.categories.keys.each do |cat|
+        .col.item-category.text-center= cat
+  .col-2.mt-2
+    .row
+      .col-12
+        = form_tag(root_path, method: :get) do
+          .text-right= select_tag :sort, options_for_select([['Sort ads by', 0], ['date (oldest)', 1], ['date (newest)', 2],
+          ['price (cheapest)', 3], ['price (expensive)', 4]]), onchange: "this.form.submit();", class: 'form-control-sm'
+          = submit_tag :sort_by_submit, style: 'display: none;', id: 'sort_submit'
 .row
-  - @items.each do |item|
-    .col-12
-      = link_to item_path(item) do
-        .adv.border-body.mt-2
-          .row
-            .col-3= image_tag item.image.url(:medium), class: 'main-image'
-            .col-7
-              .item-title= item.title
-              .item-category= item.category
-              .item-description= item.description
-              %br
-              .item-city= item.city
-            .col-2
-              .item-price.text-right= "#{item.price} p."
-              %br
-              %br
-              %br
-              .item-updated.text-right= item.updated_at.to_formatted_s(:short)
+  .col-10
+    - @items.each do |item|
+      .col-12
+        = link_to item_path(item) do
+          .adv.border-body.mt-2
+            .row
+              .col-3= image_tag item.image.url(:medium), class: 'img-fluid'
+              .col-7
+                .item-title= item.title
+                .item-category= item.category
+                .item-description= item.description
+                %br
+                .item-city= item.city
+              .col-2
+                .item-price.text-right= "#{item.price} p."
+                %br
+                %br
+                %br
+                .item-updated.text-right= item.updated_at.to_formatted_s(:short)
+  .col-2.mt-2.border-top
+    = form_tag(search_path, method: :get, html: { class: 'form-inline' }) do
+      .row.form-group.mt-2
+        .col-12
+          = label_tag 'city'
+        .col-12
+          = select_tag :city, options_for_select(['All', 'Minsk', 'Vitebsk', 'Mogilev', 'Gomel','Brest', 'Grodno']), class: 'form-control-sm search-controls'
+      .row.form-group.mt-2
+        .col-12
+          = label_tag 'category'
+        .col-12
+          = select_tag :category, options_for_select([['All', 0 ]+ Item.categories.map{ |key, value| [key, value] }]), class: 'form-control-sm search-controls'
+      .row.form-group.mt-2
+        .col-12
+          = label_tag 'price'
+        .col-6
+          = text_field_tag :price_from, nil, placeholder: 'From', class: 'form-control search-controls'
+        .col-6
+          = text_field_tag :price_to, nil, placeholder: 'To', class: 'form-control search-controls'
+      .row.form-group.mt-2
+        .col-12
+          = label_tag 'condition'
+        .col-12
+          = radio_button_tag :condition, 0, true
+          = label_tag 'Any'
+        .col-12
+          = radio_button_tag :condition, 1
+          = label_tag 'New'
+        .col-12
+          = radio_button_tag :condition, 2
+          = label_tag 'Worn'
+      .row.form-group.mt-2
+        .col-6
+          = label_tag 'With photo'
+        .col-6
+          = check_box_tag :photo, 'with_photo', true
+      .row.form-group.mt-2
+        .col-12
+          = submit_tag 'Results', class: 'btn btn-success btn-block'
+.row.mt-2
+  .col
+  .col
+    = paginate @items
+  .col
+.row
+  .col
+  .col
+    = page_entries_info @items
+  .col
