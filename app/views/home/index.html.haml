@@ -34,7 +34,7 @@
                 %br
                 %br
                 .item-updated.text-right= item.updated_at.to_formatted_s(:short)
-  .col-2.mt-2.border-top
+  .col-2.mt-2.border-left.border-top.bg-light
     = form_tag(search_path, method: :get, html: { class: 'form-inline' }) do
       .row.form-group.mt-2
         .col-12
