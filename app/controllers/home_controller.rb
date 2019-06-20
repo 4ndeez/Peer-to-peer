@@ -24,7 +24,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    @items = Item.all.order(updated_at: :desc).page(params[:page]).per(10)
+    @items = Item.search(search_params).order(updated_at: :desc).page(params[:page]).per(10)
     render 'home/index'
   end
 
@@ -39,6 +39,6 @@ class HomeController < ApplicationController
   end
 
   def search_params
-
+    params.permit(:city_id, :category, :price_from, :price_to, :condition, :image_file_size)
   end
 end

@@ -1,7 +1,10 @@
-%h1 Editing item
-.border-bottom
-= render 'form'
+.container
+  .row.mt-4
+    .col-12
+      %h2.text-center Editing item
+      .col-12.border-body
+        = render 'form'
 
-= link_to 'Show', @item, class: 'btn btn-primary'
-\|
-= link_to 'Back', items_path, class: 'btn btn-secondary'
+        = link_to 'Show', @item, class: 'btn btn-primary'
+        \|
+        = link_to 'Back', items_path, class: 'btn btn-secondary'

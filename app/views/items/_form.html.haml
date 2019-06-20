@@ -6,30 +6,46 @@
         - @item.errors.full_messages.each do |message|
           %li= message
 
-  .form-group
-    = f.label :title
-    = f.text_field :title, id: 'title', class: 'form-control'
-  .form-group.mt-4
-    = f.label :category
-    = f.select :category, Item.categories.keys, class: 'form-control', id: 'category'
-  .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
-  .form-group
-    = f.label :manufacturer
-    = f.text_field :manufacturer, class: 'form-control'
-  .form-group
-    = f.label :condition
-    = f.select :condition, ['New', 'Not new'], class: 'form-control'
-  .form-group
-    = f.label :image
-    .image-form= f.file_field :image
-  .form-group
-    = f.label :city
-    = f.select :city, ['Minsk', 'Vitebsk', 'Mogilev', 'Gomel','Brest', 'Grodno'], class: 'form-control'
-  .form-group
-    = f.label :price
-    = f.number_field :price, class: 'form-control'
+  .form-group.row
+    .col-2
+      = f.label :title
+    .col-10
+      = f.text_field :title, id: 'title', class: 'form-control'
+  .form-group.mt-4.row
+    .col-2
+      = f.label :category
+    .col-10
+      = f.select :category, Item.categories.keys, class: 'form-control', id: 'category'
+  .form-group.row
+    .col-2
+      = f.label :description
+    .col-10
+      = f.text_area :description, class: 'form-control'
+  .form-group.row
+    .col-2
+      = f.label :manufacturer
+    .col-10
+      = f.text_field :manufacturer, class: 'form-control'
+  .form-group.row
+    .col-2
+      = f.label :condition
+    .col-10
+      = f.select :condition, ['New', 'Not new'].prepend(['-', nil]), class: 'form-control'
+  .form-group.row
+    .col-2
+      = f.label :image
+    .col-10.image-form
+      = f.file_field :image
+  .form-group.row
+    .col-2
+      = f.label :city_id
+    .col-10
+      = f.select :city_id, [['Brest', 1], ['Vitebsk', 2], ['Gomel', 3], ['Grodno', 4], ['Minsk region', 5], ['Mogilev', 6], ['Minsk', 7], ['None', 8]], class: 'form-control'
+  .form-group.row
+    .col-2
+      = f.label :price
+    .col-10
+      = f.number_field :price, class: 'form-control'
   .field
     = f.hidden_field :user_id, value: current_user.id
   .field

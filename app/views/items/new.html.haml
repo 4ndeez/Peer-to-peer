@@ -1,6 +1,8 @@
 .container
-  %h1= 'New item'
-  .border-bottom
-  = render 'form'
+  .row.mt-4
+    .col-12
+      %h2.text-center New item
+      .col-12.border-body
+        = render 'form'
 
-= link_to 'Back', items_path, class: 'btn btn-secondary'
+        = link_to 'Back', items_path, class: 'btn btn-secondary'

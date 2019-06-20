@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_002147) do
+ActiveRecord::Schema.define(version: 2019_06_19_232644) do
+
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "index"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "sender_id"
@@ -34,7 +41,8 @@ ActiveRecord::Schema.define(version: 2019_06_14_002147) do
     t.string "image_content_type"
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
-    t.string "city"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_items_on_city_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -100,7 +108,6 @@ ActiveRecord::Schema.define(version: 2019_06_14_002147) do
     t.date "birth_date"
     t.boolean "gender"
     t.string "nickname"
-    t.string "city"
     t.string "first_phone"
     t.string "second_phone"
     t.string "avatar_file_name"
@@ -109,14 +116,18 @@ ActiveRecord::Schema.define(version: 2019_06_14_002147) do
     t.datetime "avatar_updated_at"
     t.string "first_name"
     t.string "second_name"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "cities"
   add_foreign_key "items", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "news", "users"
   add_foreign_key "pictures", "items"
   add_foreign_key "things", "users"
+  add_foreign_key "users", "cities"
 end

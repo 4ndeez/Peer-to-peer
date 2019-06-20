@@ -4,6 +4,7 @@ class User < ApplicationRecord
   enum role: { user: 0, moderator: 1, admin: 2 }
   enum gender: { Male: true, Female: false }
 
+  validates :nickname, uniqueness: true
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
 
   has_attached_file :avatar,
@@ -12,4 +13,5 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   has_many :items
+  belongs_to :city
 end

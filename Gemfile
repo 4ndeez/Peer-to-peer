@@ -47,6 +47,8 @@ gem 'rubocop', require: false
 gem 'ransack'
 gem 'simple_form'
 
+gem 'rails_12factor', group: :production
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

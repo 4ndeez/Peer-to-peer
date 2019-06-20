@@ -8,11 +8,14 @@
         %p= @user.nickname
         %p.font-weight-bold= "#{@user.second_name} #{@user.first_name}"
         = mail_to @user.email
-        %p= @user.city
+        %p= @user.city.name
         %p= @user.birth_date.strftime("%B %d, %Y")
         %p= @user.gender
         %p= @user.first_phone
-      %btn= link_to 'Edit', edit_user_path, class: 'btn btn-success'
+      - if policy(@user).edit?
+        = link_to 'Edit', edit_user_path, class: 'btn btn-success'
+      - if policy(@user).destroy?
+        = link_to 'Delete profile', user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t(:not_sure) }
   .col-9
     %h2.text-center= "User ads(#{@user.items.count})"
     .col-12.border-body
@@ -24,5 +27,5 @@
                 = image_tag item.image.url(:medium), class: 'profile-ad-image border-bottom'
                 .profile-category= item.category
                 .profile-title.font-weight-bold= item.title
-                .profile-city= item.city
+                .profile-city= item.city.name
                 .profile-price.font-weight-bold= "#{item.price} p."

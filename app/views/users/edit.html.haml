@@ -31,9 +31,9 @@
               = f.date_select( :birth_date, order: [:day, :month, :year], start_year: Date.current.year, end_year: 1900)
           .form-group.row
             .col-2
-              = f.label 'City', class: 'col-form-label'
+              = f.label :city_id, class: 'col-form-label'
             .col-10
-              = f.select :city, ['Minsk', 'Vitebsk', 'Mogilev', 'Gomel','Brest', 'Grodno']
+              = f.select :city_id, [['Brest', 1], ['Vitebsk', 2], ['Gomel', 3], ['Grodno', 4], ['Minsk region', 5], ['Mogilev', 6], ['Minsk', 7], ['None', 8]]
           .form-group.row
             .col-2
               = f.label 'Gender', class: 'col-form-label'
