@@ -3,7 +3,7 @@
     %h2.text-left User profile
     .col-12.border-body
       .user-block.text-left
-        =image_tag @user.avatar.url(:profile), class: 'border'
+        =image_tag @user.avatar.url(:profile), class: 'img-fluid'
         .border-bottom.mt-2
         %p= @user.nickname
         %p.font-weight-bold= "#{@user&.second_name} #{@user&.first_name}"
