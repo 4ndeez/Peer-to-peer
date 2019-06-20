@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_232644) do
+ActiveRecord::Schema.define(version: 2019_06_20_160040) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -64,22 +64,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_232644) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.bigint "image_file_size"
-    t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_news_on_user_id"
-  end
-
-  create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.bigint "image_file_size"
-    t.datetime "image_updated_at"
-    t.bigint "item_id"
-    t.index ["item_id"], name: "index_pictures_on_item_id"
   end
 
   create_table "things", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -127,7 +112,6 @@ ActiveRecord::Schema.define(version: 2019_06_19_232644) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "news", "users"
-  add_foreign_key "pictures", "items"
   add_foreign_key "things", "users"
   add_foreign_key "users", "cities"
 end

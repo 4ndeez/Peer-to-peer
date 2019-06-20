@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'messages/index'
   get 'conversations/index'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :items
   resources :news
   get 'home/index'
