@@ -6,12 +6,12 @@
         =image_tag @user.avatar.url(:profile), class: 'border'
         .border-bottom.mt-2
         %p= @user.nickname
-        %p.font-weight-bold= "#{@user.second_name} #{@user.first_name}"
+        %p.font-weight-bold= "#{@user&.second_name} #{@user&.first_name}"
         = mail_to @user.email
-        %p= @user.city.name
-        %p= @user.birth_date.strftime("%B %d, %Y")
-        %p= @user.gender
-        %p= @user.first_phone
+        %p= @user&.city.name
+        %p= @user&.birth_date&.strftime("%B %d, %Y")
+        %p= @user&.gender
+        %p= @user&.first_phone
       - if policy(@user).edit?
         = link_to 'Edit', edit_user_path, class: 'btn btn-success'
       - if policy(@user).destroy?
