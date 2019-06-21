@@ -19,7 +19,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || user.moderator? || record.user_id == user.id
+    user&.admin? || user&.moderator? || record&.user_id == user&.id
   end
 
   def edit?
@@ -27,7 +27,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin? || user.moderator? || record.user_id == user.id
+    user&.admin? || user&.moderator? || record&.user_id == user&.id
   end
 
   def show?

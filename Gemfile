@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'aws-sdk', '~> 2.3'
 gem 'i18n'
 gem 'devise'
 gem 'pundit'

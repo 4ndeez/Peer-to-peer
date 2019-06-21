@@ -1,47 +1,47 @@
 .container
   .row.mt-4
     .col-12
-      %h2.text-center Editing user profile
+      %h2.text-center=t(:user_profile_edit)
       .col-12.border-body
         = form_for :user, url: user_path(@user), method: :put, class: 'form' do |f|
           .form-group.row
             .col-2
-              = f.label 'First name', class: 'col-form-label'
+              = f.label t(:first_name), class: 'col-form-label'
             .col-10
               = f.text_field :first_name, class: 'form-control'
           .form-group.row
             .col-2
-              = f.label 'Second name', class: 'col-form-label'
+              = f.label t(:second_name), class: 'col-form-label'
             .col-10
               = f.text_field :second_name, class: 'form-control'
           .form-group.row
             .col-2
-              = f.label 'E-mail', class: 'col-form-label'
+              = f.label t(:email), class: 'col-form-label'
             .col-10
               = f.text_field :email, class: 'form-control'
           .form-group.row
             .col-2
-              = f.label 'NickName', class: 'col-form-label'
+              = f.label t(:nickname), class: 'col-form-label'
             .col-10
               = f.text_field :nickname, class: 'form-control'
           .form-group.row
             .col-2
-              = f.label 'Date of birth', class: 'col-form-label'
+              = f.label t(:date_of_birth), class: 'col-form-label'
             .col-10
               = f.date_select( :birth_date, order: [:day, :month, :year], start_year: Date.current.year, end_year: 1900)
           .form-group.row
             .col-2
-              = f.label :city_id, class: 'col-form-label'
+              = f.label t(:city_id), class: 'col-form-label'
             .col-10
-              = f.select :city_id, [['Brest', 1], ['Vitebsk', 2], ['Gomel', 3], ['Grodno', 4], ['Minsk region', 5], ['Mogilev', 6], ['Minsk', 7], ['None', 8]]
+              = f.select :city_id, [[t(:city_brest), 1], [t(:city_vitebsk), 2], [t(:city_gomel), 3], [t(:city_grodno), 4], [t(:city_minsk_area), 5], [t(:city_mogilev), 6], [t(:city_minsk), 7], [t(:none), 8]]
           .form-group.row
             .col-2
-              = f.label 'Gender', class: 'col-form-label'
+              = f.label t(:gender), class: 'col-form-label'
             .col-10
-              = f.select :gender, ['Male', 'Female']
+              = f.select :gender, [[t(:male), 'Male'], [t(:female), 'Female']]
           .form-group.row
             .col-2
-              = f.label 'Avatar', class: 'col-form-label'
+              = f.label t(:image), class: 'col-form-label'
             .col-10
               = f.file_field :avatar
           .form-group.row
@@ -50,14 +50,14 @@
               = image_tag @user.avatar.url(:thumb)
           .form-group.row
             .col-2
-              = f.label 'First phone', class: 'col-form-label'
+              = f.label t(:first_phone), class: 'col-form-label'
             .col-10
               = f.text_field :first_phone, class: 'form-control'
           .form-group.row
             .col-2
-              = f.label 'Second phone', class: 'col-form-label'
+              = f.label t(:second_phone), class: 'col-form-label'
             .col-10
               = f.text_field :second_phone, class: 'form-control'
           .form-group.row
             .col-12
-              = f.submit 'Update', class: 'btn btn-success  '
+              = f.submit t(:update), class: 'btn btn-success  '

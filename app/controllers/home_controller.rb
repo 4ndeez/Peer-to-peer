@@ -28,6 +28,11 @@ class HomeController < ApplicationController
     render 'home/index'
   end
 
+  def set_locale
+    I18n.default_locale = params[:locale]
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def item_params

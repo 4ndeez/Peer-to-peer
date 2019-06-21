@@ -1,18 +1,24 @@
 .row.border-simple
   .col-10.mt-2
-    %p= "Total advertisements: #{Item.count}"
+    %p= "#{t(:ad_total)} #{Item.count}"
     .row.mb-2
-      .col
       = form_tag(root_path, method: :get) do
-        .item-category= 'All'
-      - Item.categories.keys.each do |cat|
-        .col.item-category.text-center= cat
+        .col.item-category= t(:all)
+      .col.text-center.item-category= t(:property)
+      .col.text-center.item-category= t(:auto)
+      .col.text-center.item-category= t(:technics)
+      .col.text-center.item-category= t(:clothes)
+      .col.text-center.item-category= t(:sports)
+      .col.text-center.item-category= t(:animals)
+      .col.text-center.item-category= t(:work)
+      .col.text-center.item-category= t(:service)
+      .col.text-center.item-category= t(:other)
   .col-2.mt-2
     .row
       .col-12
         = form_tag(root_path, method: :get) do
-          .form-group.text-right= select_tag :sort, options_for_select([['Sort ads by', 0], ['date (oldest)', 1], ['date (newest)', 2],
-          ['price (cheapest)', 3], ['price (expensive)', 4]]), onchange: "this.form.submit();", class: 'form-control'
+          .form-group.text-right= select_tag :sort, options_for_select([[t(:sort_ads_by), 0], [t(:sort_oldest), 1], [t(:sort_newest), 2],
+          [t(:sort_cheapest), 3], [t(:sort_expensive), 4]]), onchange: "this.form.submit();", class: 'form-control'
           = submit_tag :sort_by_submit, style: 'display: none;', id: 'sort_submit'
 .row
   .col-10
@@ -21,8 +27,8 @@
         = link_to item_path(item) do
           .adv.border-body.mt-2
             .row
-              .col-3= image_tag item.image.url(:medium), class: 'img-fluid'
-              .col-7
+              .col-3= image_tag item.image.url(:medium), class: 'img-fluid adv-img-index'
+              .col-7.border-left
                 .item-title= item.title
                 .item-category= item.category
                 .item-description= item.description
@@ -38,41 +44,41 @@
     = form_tag(search_path, method: :get, html: { class: 'form-inline' }) do
       .row.form-group.mt-2
         .col-12
-          = label_tag :city_id
+          = label_tag t(:city_id)
         .col-12
-          = select_tag :city_id, options_for_select([['Brest', 1], ['Vitebsk', 2], ['Gomel', 3], ['Grodno', 4], ['Minsk region', 5], ['Mogilev', 6], ['Minsk', 7]].prepend(['All', nil])), class: 'form-control-sm search-controls'
+          = select_tag :city_id, options_for_select([[t(:city_brest), 1], [t(:city_vitebsk), 2], [t(:city_gomel), 3], [t(:city_grodno), 4], [t(:city_minsk_area), 5], [t(:city_mogilev), 6], [t(:city_minsk), 7]].prepend([t(:all), nil])), class: 'form-control-sm search-controls'
       .row.form-group.mt-2
         .col-12
-          = label_tag 'category'
+          = label_tag t(:category)
         .col-12
-          = select_tag :category, options_for_select(Item.categories.map{ |key, value| [key, value] }.prepend(['All', nil ])), class: 'form-control-sm search-controls'
+          = select_tag :category, options_for_select(Item.categories.map{ |key, value| [key, value] }.prepend([t(:all), nil ])), class: 'form-control-sm search-controls'
       .row.form-group.mt-2
         .col-12
-          = label_tag 'price'
+          = label_tag t(:price)
         .col-6
-          = text_field_tag :price_from, nil, placeholder: 'From', class: 'form-control search-controls'
+          = text_field_tag :price_from, nil, placeholder: t(:from), class: 'form-control search-controls'
         .col-6
-          = text_field_tag :price_to, nil, placeholder: 'To', class: 'form-control search-controls'
+          = text_field_tag :price_to, nil, placeholder: t(:to), class: 'form-control search-controls'
       .row.form-group.mt-2
         .col-12
-          = label_tag 'condition'
+          = label_tag t(:condition)
         .col-12
           = radio_button_tag :condition, "", true
-          = label_tag 'Any'
+          = label_tag t(:any)
         .col-12
-          = radio_button_tag :condition, 'New'
-          = label_tag 'New'
+          = radio_button_tag :condition, t(:new)
+          = label_tag t(:new)
         .col-12
-          = radio_button_tag :condition, 'Not new'
-          = label_tag 'Worn'
+          = radio_button_tag :condition, t(:not_new)
+          = label_tag t(:not_new)
       .row.form-group.mt-2
         .col-6
-          = label_tag 'Only with photo'
+          = label_tag t(:only_with_photo)
         .col-6
           = check_box_tag :image_file_size, checked_value = true, unchecked_value = nil, checked: true
       .row.form-group.mt-2
         .col-12
-          = submit_tag 'Results', class: 'btn btn-success btn-block'
+          = submit_tag t(:results), class: 'btn btn-success btn-block'
 .row.mt-2
   .col
   .col

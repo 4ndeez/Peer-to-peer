@@ -1,6 +1,6 @@
 .row.mt-2
   .col-3
-    %h2.text-left User profile
+    %h2.text-left=t(:user_profile)
     .col-12.border-body
       .user-block.text-left
         =image_tag @user.avatar.url(:profile), class: 'img-fluid'
@@ -13,18 +13,18 @@
         %p= @user&.gender
         %p= @user&.first_phone
       - if policy(@user).edit?
-        = link_to 'Edit', edit_user_path, class: 'btn btn-success'
+        = link_to t(:edit), edit_user_path, class: 'btn btn-success'
       - if policy(@user).destroy?
-        = link_to 'Delete profile', user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t(:not_sure) }
+        = link_to t(:destroy), user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: t(:not_sure) }
   .col-9
-    %h2.text-center= "User ads(#{@user.items.count})"
+    %h2.text-center= "#{t(:user_ads)}(#{@user.items.count})"
     .col-12.border-body
       .row
         - @user.items.each do |item|
           .col-4
             = link_to item_path(item) do
               .profile-ad.border-body.mb-2
-                = image_tag item.image.url(:medium), class: 'profile-ad-image border-bottom'
+                = image_tag item.image.url(:medium), class: 'profile-ad-image border-bottom img-fluid'
                 .profile-category= item.category
                 .profile-title.font-weight-bold= item.title
                 .profile-city= item.city.name

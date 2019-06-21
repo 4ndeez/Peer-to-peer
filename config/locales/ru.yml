@@ -1,0 +1,108 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  hello: "Hello world"
+  ad_total: "Всего объявлений"
+  all: "Все"
+  sort_ads_by: "Сортировать по"
+  sort_oldest: 'дате (старые)'
+  sort_newest: 'дате (новые)'
+  sort_cheapest: 'цене (дешевые)'
+  sort_expensive: 'цене (дорогие)'
+  city_brest: 'Брест'
+  city_gomel: 'Гомель'
+  city_grodno: 'Гродно'
+  city_mogilev: 'Могилев'
+  city_minsk: 'Минск'
+  city_minsk_area: 'Минский регион'
+  city_vitebsk: 'Витебск'
+  category: 'Категория'
+  price: 'Цена'
+  condition: 'Состояние'
+  any: 'Любое'
+  new: 'Новое'
+  not_new: 'Б/у'
+  results: 'Результаты'
+  only_with_photo: 'Только с фото'
+  to: 'До'
+  from: 'От'
+  none: 'Нету'
+  title: 'Заголовок'
+  description: 'Описание'
+  manufacturer: 'Производитель'
+  city_id: 'Город'
+  image: 'Изображение'
+  save: 'Сохранить'
+  show: 'Показать'
+  back: 'Назад'
+  item_edit: 'Редактирование объявления'
+  item_new: 'Новое объявление'
+  message_owner: 'Написать владельцу'
+  ads: 'Объявления'
+  registered_at: 'Зарегистрирован'
+  about: 'Об'
+  edit: 'Редактировать'
+  destroy: 'Удалить'
+  not_sure: 'Вы уверены?'
+  home: 'Домой'
+  search: 'Поиск'
+  new_ad: 'Добавить'
+  profile: 'Профиль'
+  admin: 'Админ'
+  messages: 'Сообщения'
+  logout: 'Выйти'
+  login: 'Войти'
+  user_profile_edit: 'Редактирование профиля пользователя'
+  first_name: 'Имя'
+  second_name: 'Фамилия'
+  email: 'Почта'
+  nickname: 'Псевдоним'
+  date_of_birth: 'Дата рождения'
+  gender: 'Пол'
+  male: 'Мужской'
+  female: 'Женский'
+  first_phone: 'Основной телефон'
+  second_phone: 'Дополнительный телефон'
+  user_ads: 'Объявления пользователя'
+  user_profile: 'Профиль'
+  password: 'Пароль'
+  password_confirmation: 'Подтверждение пароля'
+  register: 'Регистрация'
+  property: 'Недвижимость'
+  auto: 'Авто'
+  technics: 'Техника'
+  clothes: 'Одежда'
+  sports: 'Спорт'
+  animals: 'Животные'
+  work: 'Работа'
+  service: 'Услуги'
+  other: 'Прочее'

@@ -2,13 +2,13 @@
 .container-fluid.border-body
   .row
     .col-8
-      = image_tag @item.image.url(:medium), class: 'item-image-big img-fluid'
+      = image_tag @item.image.url(:original), class: 'item-image-big img-fluid'
     .col-4.border-left
       %h4.font-weight-bold= @item.title
       %h5.text-sm= @item.city.name
       %br
       %h4.font-weight-bold= "#{@item.price} p."
-      = link_to 'Message owner', root_path, class: 'btn btn-success btn-block'
+      = link_to t(:message_owner), root_path, class: 'btn btn-success btn-block'
       .contacts-window.mt-2.border-body.text-center
         %h5= @item.user.first_phone
         %h5= @item.user.second_phone
@@ -20,12 +20,12 @@
           .col-8
             = link_to user_path(@item.user_id) do
               %p.font-weight-bold= "#{@item.user.second_name} #{@item.user.first_name}"
-            %p= "Advertisements: #{@item.user.items.count}"
+            %p= "#{t(:ads)}: #{@item.user.items.count}"
             = link_to user_path(@item.user_id) do
-              %p.user-registered.text-right= "Registered at: #{@item.user.created_at.strftime("%B %d, %Y")}"
+              %p.user-registered.text-right= "#{t(:registered_at)}: #{@item.user.created_at.strftime("%B %d, %Y")}"
   .row
     .col-8.mt-2
-      %h4.font-weight-bold.text-center= "About #{@item.title}"
+      %h4.font-weight-bold.text-center= "#{t(:about)} #{@item.title}"
   %p
     %b Title:
     = @item.title
@@ -40,10 +40,10 @@
     = @item.condition
   .row
     .col-8.mt-2
-      %h4.font-weight-bold.text-center= 'Description'
+      %h4.font-weight-bold.text-center= t(:description)
       %h5= @item.description
   - if policy(@item).update?
-    = link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary'
-  = link_to 'Back', items_path, class: 'btn btn-secondary'
+    = link_to t(:edit), edit_item_path(@item), class: 'btn btn-primary'
+  = link_to t(:back), items_path, class: 'btn btn-secondary'
   - if policy(@item).destroy?
-    = link_to 'Destroy', item_path(@item), class: 'btn btn-danger', method: :delete, data: { confirm: t(:not_sure) }
+    = link_to t(:destroy), item_path(@item), class: 'btn btn-danger', method: :delete, data: { confirm: t(:not_sure) }

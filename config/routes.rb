@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
 
   get 'home/search', to: 'home#search', as: 'search'
+  post 'set_locale', to: 'home#set_locale'
 end

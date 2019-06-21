@@ -8,42 +8,42 @@
 
   .form-group.row
     .col-2
-      = f.label :title
+      = f.label t(:title)
     .col-10
-      = f.text_field :title, id: 'title', class: 'form-control'
+      = f.text_field :title, class: 'form-control'
   .form-group.mt-4.row
     .col-2
-      = f.label :category
+      = f.label t(:category)
     .col-10
       = f.select :category, Item.categories.keys, class: 'form-control', id: 'category'
   .form-group.row
     .col-2
-      = f.label :description
+      = f.label t(:description)
     .col-10
       = f.text_area :description, class: 'form-control'
   .form-group.row
     .col-2
-      = f.label :manufacturer
+      = f.label t(:manufacturer)
     .col-10
       = f.text_field :manufacturer, class: 'form-control'
   .form-group.row
     .col-2
-      = f.label :condition
+      = f.label t(:condition)
     .col-10
-      = f.select :condition, ['New', 'Not new'].prepend(['-', nil]), class: 'form-control'
+      = f.select :condition, options_for_select([[t(:new), 'New'], [t(:not_new), 'Not new']].prepend(['-', nil])), class: 'form-control'
   .form-group.row
     .col-2
-      = f.label :image
+      = f.label t(:image)
     .col-10.image-form
       = f.file_field :image
   .form-group.row
     .col-2
-      = f.label :city_id
+      = f.label t(:city_id)
     .col-10
-      = f.select :city_id, [['Brest', 1], ['Vitebsk', 2], ['Gomel', 3], ['Grodno', 4], ['Minsk region', 5], ['Mogilev', 6], ['Minsk', 7], ['None', 8]], class: 'form-control'
+      = f.select :city_id, [[t(:city_brest), 1], [t(:city_vitebsk), 2], [t(:city_gomel), 3], [t(:city_grodno), 4], [t(:city_minsk_area), 5], [t(:city_mogilev), 6], [t(:city_minsk), 7], [t(:none), 8]], class: 'form-control'
   .form-group.row
     .col-2
-      = f.label :price
+      = f.label t(:price)
     .col-10
       = f.number_field :price, class: 'form-control'
   .field
@@ -55,4 +55,4 @@
   -#  = f.label :pictures, class: 'control-label'
   -#  = file_field_tag "images[]", type: :file, multipart: true
   .form-group
-    = f.submit 'Save', class: 'btn btn-success'
+    = f.submit t(:save), class: 'btn btn-success'

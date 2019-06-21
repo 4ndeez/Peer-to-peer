@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
   belongs_to :city
-  has_many :pictures, dependent: :destroy
 
   validates :price, :title, presence: true
 

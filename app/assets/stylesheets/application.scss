@@ -56,8 +56,7 @@ footer {
 }
 
 .profile-ad-image {
-  height: 150px;
-  width: 200px;
+  max-height: 20vh;
   vertical-align: middle;
 }
 
@@ -86,4 +85,16 @@ footer {
 
 .search-controls {
   width: inherit;
+}
+
+.adv-img-index {
+  max-height: 28vh;
+}
+
+.image-icon {
+  height: 3vh;
+}
+
+.faded {
+  opacity: 0.2;
 }
